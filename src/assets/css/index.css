@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-width: 1300px;
+    font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+    background: url('~assets/img/backimg.jpg') no-repeat;
+    background-size: 100%;
+}
