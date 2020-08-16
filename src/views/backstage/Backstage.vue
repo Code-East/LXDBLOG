@@ -4,19 +4,19 @@
       <div class="title" slot="left">管理后台</div>
 
       <div slot="center" class="center">
-        <nav-bar-item>
+        <nav-bar-item path='/backstage/article'>
           <i class="el-icon-tickets"></i>
           文章管理
         </nav-bar-item>
-        <nav-bar-item>
+        <nav-bar-item path='/backstage/articleclassify'>
           <i class="el-icon-pie-chart"></i>
           分类管理
         </nav-bar-item>
-        <nav-bar-item>
+        <nav-bar-item path='/backstage/friend'>
           <i class="el-icon-female"></i>
           友链管理
         </nav-bar-item>
-        <nav-bar-item>
+        <nav-bar-item path='/backstage/photoinfo'>
           <i class="el-icon-picture-outline"></i>
           相册管理
         </nav-bar-item>
@@ -39,6 +39,8 @@
         </el-dropdown>
       </div>
     </nav-bar>
+
+    <router-view/>
   </div>
 </template>
 
@@ -50,7 +52,7 @@ import { setToken } from "network/login";
 export default {
   data() {
     return {
-      username: this.$store.getters.getUser.username,
+      username: localStorage.getItem('user')
     };
   },
   components: {

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { getUser,setToken} from "network/login";
+import { getUser, setToken } from "network/login";
 export default {
   data() {
     return {
@@ -32,30 +32,32 @@ export default {
         this.$message({
           message: "请输入用户名和密码",
           type: "warning",
-           duration:2000
+          duration: 2000,
         });
         return;
       }
       let username = this.username;
       let password = this.password;
-      //将用户信息存放入vuex，以便后面使用
-      this.$store.commit('setUser',{username,password});
+
+      console.log(this.$store.getters.getUser);
       // 从vuex中获取用户信息
-      let user = {username,password};
+      let user = { username, password };
       // 发送axios请求，并返回是否存在此用户信息
       let userdata = await getUser(user);
       // 判断用户名和密码，密码是否正确,后端返回-1表示错误
-      if (userdata.data=='-1') {
+      if (userdata.data == "-1") {
         this.$message.error("用户名或密码错误");
       } else {
         this.$message({
           message: "登入成功",
           type: "success",
-          duration:2000
+          duration: 2000,
         });
+        //将用户信息存放入浏览器本地储存，以便后面使用
+        localStorage.setItem('user',username);
         // 组合obj对象，修改token为true
         let token = true;
-        let obj = {token,username};
+        let obj = { token, username };
         //调用修改token的axios函数
         setToken(obj);
         // 跳转至后台页面

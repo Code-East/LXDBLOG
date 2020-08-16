@@ -63,7 +63,8 @@ export default {
     NavBar,
     NavBarItem
   },
-  created() {},
+  created() {
+  },
 };
 </script>
 
