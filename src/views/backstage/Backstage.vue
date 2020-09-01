@@ -4,19 +4,19 @@
       <div class="title" slot="left">管理后台</div>
 
       <div slot="center" class="center">
-        <nav-bar-item path='/backstage/article'>
+        <nav-bar-item path='/admin/article'>
           <i class="el-icon-tickets"></i>
           文章管理
         </nav-bar-item>
-        <nav-bar-item path='/backstage/articleclassify'>
+        <nav-bar-item path='/admin/articleclassify'>
           <i class="el-icon-pie-chart"></i>
           分类管理
         </nav-bar-item>
-        <nav-bar-item path='/backstage/friend'>
+        <nav-bar-item path='/admin/friend'>
           <i class="el-icon-female"></i>
           友链管理
         </nav-bar-item>
-        <nav-bar-item path='/backstage/photoinfo'>
+        <nav-bar-item path='/admin/photoinfo'>
           <i class="el-icon-picture-outline"></i>
           相册管理
         </nav-bar-item>
@@ -84,7 +84,7 @@ export default {
   width: 100%;
   height: 100vh;
   position: relative;
-  z-index: 1000;
+  z-index: 103;
   background: url("~assets/img/backimg.jpg") no-repeat;
   background-size: 100%;
 }

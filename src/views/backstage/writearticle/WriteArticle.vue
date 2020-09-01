@@ -126,13 +126,16 @@ export default {
       };
       // 调用插入文章的axios,获取是否发布成功数据
       let message = await savingArticles(articleobj);
+      console.log(message);
       if (message) {
         this.$message({
           message: "发布成功",
           type: "success",
         });
         // 跳转
-        this.$router.replace("/backstage/article");
+        setTimeout(()=>{
+          this.$router.replace("/backstage/article");
+        },1000)
       } else {
         this.$message({
           message: "发布失败",
@@ -154,7 +157,6 @@ export default {
   async created(){
     // 获取分类数据
     let arr = await getClassIfyData();
-    console.log(arr.data);
     this.options = arr.data;
   }
 };

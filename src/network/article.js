@@ -45,3 +45,18 @@ export function setArticle(config) {
         params: config
     });
 }
+// 获取文章评论
+export function getComment(id) {
+    return request({
+        url: '/getcomment',
+        params: { id }
+    })
+}
+// 增加文章评论
+export function addComment(config) {
+    return request({
+        url: '/addcomment',
+        params: config,
+        method: 'post'
+    })
+}

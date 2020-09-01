@@ -61,7 +61,7 @@ export default {
         //调用修改token的axios函数
         setToken(obj);
         // 跳转至后台页面
-        this.$router.replace("/backstage").catch((err) => err);
+        this.$router.replace("/admin").catch((err) => err);
       }
     },
   },

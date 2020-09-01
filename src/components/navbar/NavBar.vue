@@ -11,7 +11,8 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   components: {},
   methods: {},
@@ -24,6 +25,7 @@ export default {
   width: 100%;
   background-color: rgba(0, 0, 0, 1);
   opacity: 0.4;
+  z-index: 100;
 }
 #navbar .nav_content {
   display: flex;

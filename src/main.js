@@ -8,6 +8,14 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 Vue.use(mavonEditor)
 Vue.use(ElementUI);
+var EventBus = new Vue();
+Object.defineProperties(Vue.prototype, {
+    $bus: {
+        get: function() {
+            return EventBus
+        }
+    }
+})
 Vue.config.productionTip = false
 
 new Vue({

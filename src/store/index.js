@@ -5,20 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: {
-            username: '',
-            password: ''
-        }
+        not404: true
     },
     mutations: {
-        setUser(state, user) {
-            state.user = user;
+        set404(state, cont) {
+            state.not404 = cont;
         }
     },
     getters: {
-        getUser(state) {
-            // console.log(state.user);
-            return state.user
+        get404(state) {
+            return state.not404
         },
     },
     actions: {},

@@ -19,11 +19,6 @@
           <i class="el-icon-time"></i>
           时间轴
         </nav-bar-item>
-        <nav-bar-item path="/music">
-          <i class="el-icon-headset"></i>
-          音乐盒
-        </nav-bar-item>
-
         <nav-bar-item path="/photo">
           <i class="el-icon-picture-outline"></i>
           照片墙
@@ -39,16 +34,18 @@
       </div>
 
       <div class="search" slot="right">
-        <form>
-          <input type="text" placeholder="Search.." />
-          <button type="submit" class="el-icon-search"></button>
-        </form>
+        <div class="form">
+          <input type="text" placeholder="Search..."  v-model="searchTxt"/>
+          <button class="el-icon-search" @click="SearchClick"></button>
+        </div>
       </div>
     </nav-bar>
-
-    <router-view />
+    <keep-alive exclude="details,is404">
+      <router-view />
+    </keep-alive>
   </div>
 </template>
+
 
 <script>
 import NavBar from "components/navbar/NavBar";
@@ -56,21 +53,33 @@ import NavBarItem from "components/navbar/NavBarItem";
 export default {
   data() {
     return {
-      
+      searchTxt:''
     };
+  },
+  methods: {
+    SearchClick() {
+      if(this.searchTxt == ''){
+         this.$message( '输入搜索内容哦！');
+        return;
+      }
+      this.$bus.$emit('setbut',this.searchTxt);
+      this.$router.push('/search/'+this.searchTxt).catch((err) => err);
+    },
   },
   components: {
     NavBar,
-    NavBarItem
+    NavBarItem,
   },
-  created() {
-  },
+  created(){
+    
+  }
 };
 </script>
 
 <style>
 /* 导入初始化css样式 */
 @import url("~assets/css/index.css");
+
 #navbar .nav_content .logo {
   width: 160px;
   height: 60px;
@@ -81,14 +90,14 @@ export default {
   width: 70%;
   height: 70%;
 }
-#navbar .nav_content form {
+#navbar .nav_content .form {
   width: 183.6px;
   height: 27.2px;
   color: rgba(255, 255, 255, 0.9);
   align-content: center;
   text-align: center;
 }
-#navbar .nav_content form input {
+#navbar .nav_content .form input {
   width: 83%;
   height: 21.8px;
   border: none;
@@ -96,11 +105,11 @@ export default {
   outline: none;
   color: rgba(255, 255, 255, 0.9);
 }
-#navbar .nav_content form button {
+#navbar .nav_content .form button {
   background-color: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 700;
+  outline: none;
 }
-
 </style>

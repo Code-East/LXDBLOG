@@ -10,12 +10,12 @@ const FileMe = () =>
     import ("views/fileme/FileMe");
 const Login = () =>
     import ("views/login/Login");
-const Music = () =>
-    import ("views/music/Music");
 const Photo = () =>
     import ("views/photo/Photo");
 const Time = () =>
     import ("views/time/Time");
+const Details = () =>
+    import ("views/details/Details");
 const BackStage = () =>
     import ("views/backstage/Backstage");
 const Article = () =>
@@ -34,6 +34,10 @@ const addClassIfy = () =>
     import ("views/backstage/addclassify/addClassIfy");
 const setClassIfy = () =>
     import ("views/backstage/setclassify/setClassIfy");
+const Search = () =>
+    import ("views/search/Search");
+const To404 = () =>
+    import ("views/To404/To404");
 
 Vue.use(VueRouter)
 
@@ -43,12 +47,14 @@ const routes = [
     { path: '/home', component: Home },
     { path: '/time', component: Time },
     { path: '/photo', component: Photo },
-    { path: '/music', component: Music },
     { path: '/fileme', component: FileMe },
     { path: '/login', component: Login },
     { path: '/classify', component: ClassIfy },
+    { path: '/search/:cont', component: Search },
+    { path: '/details/:id', component: Details },
+    { path: '*', component: To404 },
     {
-        path: '/backstage',
+        path: '/admin',
         component: BackStage,
         children: [
             { path: '/', redirect: 'Article' },
@@ -62,7 +68,7 @@ const routes = [
             { path: 'setclassify/:id', component: setClassIfy, },
 
         ]
-    }
+    },
 ]
 
 const router = new VueRouter({
@@ -76,12 +82,15 @@ router.beforeEach(async(to, from, next) => {
     if (to.path == '/login') {
         //使用浏览器本地存储
         let username = localStorage.getItem('user');
+        if (username == undefined) {
+            next();
+        }
         //使用axios发送一个请求到后端,后端返回true or false，来判断该用户是否登入了
         var isLogin = await getIsLogin({ username });
         if (isLogin.data) {
             //登入了直接进入后台
             console.log('已登入：', isLogin);
-            router.replace("/backstage").catch((err) => err);
+            router.replace("/admin").catch((err) => err);
         } else {
             //未登入进入登入页面
             console.log('未登入：', isLogin);

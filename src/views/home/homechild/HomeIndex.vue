@@ -19,10 +19,11 @@
           <img src="~assets/img/ewm/wbewm.png" class="wbewm" alt />
           <el-button slot="reference" class="wbbtn" circle></el-button>
         </el-popover>
-
-        <el-popover placement="top-start" width="151" trigger="hover" content="点击去往github">
-          <el-button slot="reference" class="gitbtn" circle></el-button>
-        </el-popover>
+        <a href="https://github.com/Code-East" class="git">
+          <el-popover placement="top-start" width="151" trigger="hover" content="点击去往github">
+            <el-button slot="reference" class="gitbtn" circle></el-button>
+          </el-popover>
+        </a>
       </div>
       <div class="title">欢迎来到我的博客，愿您能找到合适的</div>
       <hr class="hr" />
@@ -43,10 +44,7 @@
           <i class="el-icon-time"></i>
           时间轴
         </nav-bar-item>
-        <nav-bar-item path="/music">
-          <i class="el-icon-headset"></i>
-          音乐盒
-        </nav-bar-item>
+
         <nav-bar-item path="/photo">
           <i class="el-icon-picture-outline"></i>
           照片墙
@@ -55,10 +53,10 @@
           <i class="el-icon-user"></i>
           关于我
         </nav-bar-item>
-         <nav-bar-item path="/login">
-        <i class="el-icon-chat-line-square"></i>
-        登入
-      </nav-bar-item>
+        <nav-bar-item path="/login">
+          <i class="el-icon-chat-line-square"></i>
+          登入
+        </nav-bar-item>
       </div>
     </div>
   </div>
@@ -139,7 +137,8 @@ export default {
   background: #ccc;
   color: #fff;
 }
-.qqewm {
+
+.qqewm,.wxewm,.wbewm  {
   width: 150px;
   height: 150px;
 }
@@ -147,36 +146,34 @@ export default {
   width: 36px !important;
   height: 35px !important;
   background: url("~assets/img/qq.png") no-repeat !important ;
-  background-size: 100% !important ;
-  background-color: #ffffff !important ;
+  background-position: center !important;
+  background-size: 70% !important;
+  background-color: #e0e1e2 !important ;
 }
-.wxewm {
-  width: 150px;
-  height: 150px;
-}
+
 .wxbtn {
   width: 36px !important;
   height: 35px !important;
   background: url("~assets/img/wx.png") no-repeat !important ;
-  background-size: 100% !important ;
-  background-color: #ffffff !important ;
+  background-position: center !important;
+  background-size: 70% !important;
+  background-color: #e0e1e2 !important ;
 }
-.wbewm {
-  width: 150px;
-  height: 150px;
-}
+
 .wbbtn {
   width: 36px !important;
   height: 35px !important;
   background: url("~assets/img/wb.png") no-repeat !important ;
-  background-size: 100% !important ;
-  background-color: #ffffff !important ;
+  background-position: center !important;
+  background-size: 70% !important;
+  background-color: #e0e1e2 !important ;
 }
 .gitbtn {
   width: 36px !important;
   height: 35px !important;
   background: url("~assets/img/github.png") no-repeat !important ;
-  background-size: 100% !important ;
-  background-color: #ffffff !important ;
+  background-position: center !important;
+  background-size: 70% !important;
+  background-color: #e0e1e2 !important ;
 }
 </style>

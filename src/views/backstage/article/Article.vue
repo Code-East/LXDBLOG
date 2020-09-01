@@ -59,8 +59,8 @@ export default {
       this.$router.push("/backstage/writearticle");
     },
     // 获取文章数据
-    async getArticleData(s) {
-      let res = await getArticle({ start: s });
+    async getArticleData(obj) {
+      let res = await getArticle(obj);
       return res.data;
     },
     // 下一页数据
@@ -77,14 +77,16 @@ export default {
         //一次请求7条数据
         this.start = this.start + 7;
         // 获取新的数据,下一组数据
-        let data = await this.getArticleData(this.start);
+        let start = this.start;
+        let end = 7;
+        let data = await this.getArticleData({start,end});
         this.articleData = data;
       }
     },
     // 上一页数据
     async topClick() {
       if (this.count == 1) {
-        this.$message({
+         this.$message({
           message: "没有更多内容了哦！",
           type: "warning",
         });
@@ -94,7 +96,9 @@ export default {
         //一次请求7条数据
         this.start = this.start - 7;
         // 获取新的数据,下一组数据
-        let data = await this.getArticleData(this.start);
+        let start = this.start;
+        let end = 7;
+        let data = await this.getArticleData({start,end});
         this.articleData = data;
       }
     },
@@ -126,7 +130,6 @@ export default {
     // 点击行触发
     delArticle(row) {
       this.id = row.id;
-      console.log('点击行获取id：',this.id);
     },
     // 点击删除
     async delBtnClick() {
@@ -185,7 +188,7 @@ export default {
   },
   async created() {
     //获取一列7条文章数据
-    let res = await getArticle({ start: 0 });
+    let res = await getArticle({ start: 0,end:7 });
     this.articleData = res.data;
     //获取文章总数
     let len = await getArticleLen();
